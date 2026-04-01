@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hangzhou Cultural Experiences | Tea, Silk, Opera & Heritage Activities</title>
+    <meta name="description" content="Discover Hangzhou cultural experiences for inbound travelers: tea heritage, silk stories, opera, crafts, and practical planning tips.">
+    <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+    <link rel="canonical" href="/culture.html">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Hangzhou Cultural Experiences for International Travelers">
+    <meta property="og:description" content="10 curated culture projects in Hangzhou with time, logistics, and booking tips.">
+    <meta property="og:url" content="/culture.html">
+    <meta property="og:image" content="./文化体验.jpg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0c0f1a;
+            --panel: rgba(22, 28, 48, 0.72);
+            --line: rgba(156, 169, 255, 0.24);
+            --text: #eef0ff;
+            --muted: #a6b0d8;
+            --accent: #96a9ff;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background:
+                radial-gradient(circle at 85% -5%, rgba(117, 136, 255, 0.3), transparent 35%),
+                radial-gradient(circle at -10% 0%, rgba(63, 110, 205, 0.24), transparent 32%),
+                linear-gradient(150deg, #080b13 0%, #0a1020 44%, #0a0f19 100%);
+            color: var(--text);
+        }
+
+        .card {
+            position: relative;
+            overflow: hidden;
+            background: var(--panel);
+            border: 1px solid var(--line);
+            backdrop-filter: blur(7px);
+        }
+
+        .image-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: var(--card-bg);
+            background-size: cover;
+            background-position: center;
+            opacity: 0.23;
+            transform: scale(1.03);
+            filter: saturate(1.06);
+            z-index: 0;
+        }
+
+        .image-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(10, 14, 31, 0.4), rgba(10, 14, 31, 0.7));
+            z-index: 1;
+        }
+
+        .image-card > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .tag {
+            border: 1px solid rgba(150, 169, 255, 0.45);
+            background: rgba(150, 169, 255, 0.13);
+            color: #dae2ff;
+        }
+
+        .cta {
+            background: linear-gradient(90deg, #5f79ff, #4f63d9);
+        }
+
+        .linked-card {
+            display: block;
+            transition: transform 220ms ease, border-color 220ms ease;
+        }
+
+        .linked-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(150, 169, 255, 0.56);
+        }
+
+        .linked-card h2::after {
+            content: ' \2197';
+            font-size: 0.78em;
+            font-weight: 500;
+            opacity: 0.9;
+            margin-left: 0.32em;
+            color: #d2dcff;
+        }
+
+        .link-note {
+            border: 1px dashed rgba(150, 169, 255, 0.48);
+            background: rgba(22, 28, 56, 0.42);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <header class="max-w-6xl mx-auto px-5 pt-8 pb-6">
+        <a href="./index.html" class="text-sm text-indigo-200/90 hover:text-indigo-100">Back to Home</a>
+        <h1 class="text-3xl md:text-5xl font-bold mt-4 tracking-tight">Hangzhou Cultural Experiences</h1>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-5 pb-16">
+        <section class="link-note rounded-xl px-4 py-3 mb-6 text-sm text-indigo-100/95">
+            Click any culture card to open an English introduction page in a new tab (Wikipedia or English text-and-image reference).
+        </section>
+
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <a class="card image-card linked-card rounded-2xl p-5" style="--card-bg: url('https://source.unsplash.com/1600x900/?tea-village,hangzhou,china');" href="https://en.wikipedia.org/wiki/Longjing_tea" target="_blank" rel="noopener noreferrer" aria-label="Open English introduction for Longjing tea culture">
+                <p class="tag inline-flex rounded-full px-3 py-1 text-xs uppercase tracking-[0.2em]">Tea Heritage</p>
+                <h2 class="text-2xl font-semibold mt-4">Longjing Tea Village Tasting Route</h2>
+                <p class="text-[color:var(--muted)] mt-3">Hands-on tea tasting and village walk in the Dragon Well production area around West Lake.</p>
+                <ul class="mt-4 text-sm text-[color:var(--muted)] space-y-1">
+                    <li>Suggested time: 2-3 hours</li>
+                    <li>Best season: Spring tea period</li>
+                    <li>Booking tip: Reserve guided tasting in advance</li>
+                </ul>
+            </a>
+
+            <a class="card image-card linked-card rounded-2xl p-5" style="--card-bg: url('https://source.unsplash.com/1600x900/?tea,museum,china');" href="https://en.wikipedia.org/wiki/China_National_Tea_Museum" target="_blank" rel="noopener noreferrer" aria-label="Open English introduction for China National Tea Museum">
+                <p class="tag inline-flex rounded-full px-3 py-1 text-xs uppercase tracking-[0.2em]">National Museum</p>
+                <h2 class="text-2xl font-semibold mt-4">China National Tea Museum</h2>
+                <p class="text-[color:var(--muted)] mt-3">Bilingual exhibitions on Chinese tea history, production, and cultural practices in a scenic tea setting.</p>
+                <ul class="mt-4 text-sm text-[color:var(--muted)] space-y-1">
+                    <li>Suggested time: 1.5-2.5 hours</li>
+                    <li>Ideal for: Families and first-time tea learners</li>
+                    <li>Tip: Pair with nearby tea hillside route</li>
+                </ul>
+            </a>
+
+            <a class="card image-card linked-card rounded-2xl p-5" style="--card-bg: url('https://source.unsplash.com/1600x900/?silk,craft,china');" href="https://en.wikipedia.org/wiki/China_National_Silk_Museum" target="_blank" rel="noopener noreferrer" aria-label="Open English introduction for silk culture in Hangzhou">
+                <p class="tag inline-flex rounded-full px-3 py-1 text-xs uppercase tracking-[0.2em]">Textile Culture</p>
+                <h2 class="text-2xl font-semibold mt-4">Silk Culture Storytelling & Craft Walk</h2>
+                <p class="text-[color:var(--muted)] mt-3">Learn how Hangzhou's silk legacy shaped trade and aesthetics, then join light craft or showroom experiences.</p>
+                <ul class="mt-4 text-sm text-[color:var(--muted)] space-y-1">
+                    <li>Suggested time: 1.5-2 hours</li>
+                    <li>Logistics: Best arranged as guided stop</li>
+                    <li>Tip: Confirm demonstration times before visiting</li>
+                </ul>
+            </a>
+
+            <a class="card image-card linked-card rounded-2xl p-5" style="--card-bg: url('https://source.unsplash.com/1600x900/?buddhist,temple,china');" href="https://en.wikipedia.org/wiki/Lingyin_Temple" target="_blank" rel="noopener noreferrer" aria-label="Open English introduction for Lingyin Temple ritual culture">
+                <p class="tag inline-flex rounded-full px-3 py-1 text-xs uppercase tracking-[0.2em]">Buddhist Culture</p>
+                <h2 class="text-2xl font-semibold mt-4">Lingyin Temple Ritual Culture</h2>
+                <p class="text-[color:var(--muted)] mt-3">Observe incense rituals, Buddhist architecture, and mountain spirituality in one of Hangzhou's defining heritage sites.</p>
+                <ul class="mt-4 text-sm text-[color:var(--muted)] space-y-1">
+                    <li>Suggested time: 2 hours</li>
+                    <li>Etiquette: Quiet dress and respectful behavior</li>
+                    <li>Tip: Morning visits are usually calmer</li>
+                </ul>
+            </a>
+
+            <a class="card image-card linked-card rounded-2xl p-5" style="--card-bg: url('https://source.unsplash.com/1600x900/?west-lake,sunrise,hangzhou');" href="https://en.wikipedia.org/wiki/Ten_Scenes_of_West_Lake" target="_blank" rel="noopener noreferrer" aria-label="Open English introduction for the Ten Scenes of West Lake">
+                <p class="tag inline-flex rounded-full px-3 py-1 text-xs uppercase tracking-[0.2em]">Poetic Heritage</p>
+                <h2 class="text-2xl font-semibold mt-4">Ten Scenes of West Lake Culture Route</h2>
+                <p class="text-[color:var(--muted)] mt-3">Follow the classical viewpoint concept that influenced East Asian garden and landscape aesthetics.</p>
+                <ul class="mt-4 text-sm text-[color:var(--muted)] space-y-1">
+                    <li>Suggested time: Half day</li>
+                    <li>Transport: Segment route by taxi + walking</li>
+                    <li>Tip: Sunset slot for Leifeng and lakeside scenes</li>
+                </ul>
+            </a>
+
+            <a class="card image-card linked-card rounded-2xl p-5" style="--card-bg: url('https://source.unsplash.com/1600x900/?theater,performance,china');" href="https://www.travelchinaguide.com/attraction/zhejiang/hangzhou/impression-west-lake.htm" target="_blank" rel="noopener noreferrer" aria-label="Open English introduction for West Lake night performance">
+                <p class="tag inline-flex rounded-full px-3 py-1 text-xs uppercase tracking-[0.2em]">Performance</p>
+                <h2 class="text-2xl font-semibold mt-4">West Lake Night Performance Option</h2>
+                <p class="text-[color:var(--muted)] mt-3">A visual-night experience inspired by Hangzhou landscape culture, often used as a premium evening add-on.</p>
+                <ul class="mt-4 text-sm text-[color:var(--muted)] space-y-1">
+                    <li>Suggested time: 1-1.5 hours</li>
+                    <li>Booking: Reserve seats 1-3 days ahead in peak periods</li>
+                    <li>Tip: Check weather and cancellation rules</li>
+                </ul>
+            </a>
+
+            <a class="card image-card linked-card rounded-2xl p-5" style="--card-bg: url('https://source.unsplash.com/1600x900/?canal,city,china');" href="https://en.wikipedia.org/wiki/Grand_Canal_(China)" target="_blank" rel="noopener noreferrer" aria-label="Open English introduction for Grand Canal urban culture">
+                <p class="tag inline-flex rounded-full px-3 py-1 text-xs uppercase tracking-[0.2em]">Canal Life</p>
+                <h2 class="text-2xl font-semibold mt-4">Grand Canal Urban Culture Walk</h2>
+                <p class="text-[color:var(--muted)] mt-3">Mix of local daily life, heritage blocks, and modern creative spaces along the Hangzhou canal section.</p>
+                <ul class="mt-4 text-sm text-[color:var(--muted)] space-y-1">
+                    <li>Suggested time: 2-3 hours</li>
+                    <li>Ideal for: Slow travelers and photographers</li>
+                    <li>Tip: Start late afternoon for day-to-night change</li>
+                </ul>
+            </a>
+
+            <a class="card image-card linked-card rounded-2xl p-5" style="--card-bg: url('https://source.unsplash.com/1600x900/?chinese,food,heritage');" href="https://en.wikipedia.org/wiki/Hangzhou_cuisine" target="_blank" rel="noopener noreferrer" aria-label="Open English introduction for Hangzhou food heritage">
+                <p class="tag inline-flex rounded-full px-3 py-1 text-xs uppercase tracking-[0.2em]">Culinary Culture</p>
+                <h2 class="text-2xl font-semibold mt-4">Jiangnan Food Heritage Tasting</h2>
+                <p class="text-[color:var(--muted)] mt-3">Taste-oriented cultural route around classic Hangzhou flavors with storytelling on seasonal cuisine.</p>
+                <ul class="mt-4 text-sm text-[color:var(--muted)] space-y-1">
+                    <li>Suggested time: 2 hours</li>
+                    <li>Best slot: Dinner window</li>
+                    <li>Tip: Add dietary restrictions in booking notes</li>
+                </ul>
+            </a>
+
+            <a class="card image-card linked-card rounded-2xl p-5" style="--card-bg: url('https://source.unsplash.com/1600x900/?handcraft,workshop,china');" href="https://en.wikipedia.org/wiki/Chinese_handicrafts" target="_blank" rel="noopener noreferrer" aria-label="Open English introduction for Chinese handcraft culture">
+                <p class="tag inline-flex rounded-full px-3 py-1 text-xs uppercase tracking-[0.2em]">Craft Workshop</p>
+                <h2 class="text-2xl font-semibold mt-4">Handcraft Session: Seal, Fan, or Tea Utensils</h2>
+                <p class="text-[color:var(--muted)] mt-3">Short workshop modules for visitors who want a take-home cultural artifact and guided making process.</p>
+                <ul class="mt-4 text-sm text-[color:var(--muted)] space-y-1">
+                    <li>Suggested time: 60-120 minutes</li>
+                    <li>Format: Small group/private studio</li>
+                    <li>Tip: Confirm language support before booking</li>
+                </ul>
+            </a>
+
+            <a class="card image-card linked-card rounded-2xl p-5" style="--card-bg: url('https://source.unsplash.com/1600x900/?festival,lantern,china');" href="https://westlake.hangzhou.gov.cn/col/col1639433/index.html" target="_blank" rel="noopener noreferrer" aria-label="Open English or official activity updates for West Lake events">
+                <p class="tag inline-flex rounded-full px-3 py-1 text-xs uppercase tracking-[0.2em]">Festival Add-on</p>
+                <h2 class="text-2xl font-semibold mt-4">Seasonal Culture Calendar (Tea, Arts, Local Events)</h2>
+                <p class="text-[color:var(--muted)] mt-3">Flexible add-on to match your travel month with tea festivals, art weeks, and themed city events.</p>
+                <ul class="mt-4 text-sm text-[color:var(--muted)] space-y-1">
+                    <li>Suggested time: 1-3 hours depending on event</li>
+                    <li>Planning: Event availability changes monthly</li>
+                    <li>Tip: Confirm ticket release date early</li>
+                </ul>
+            </a>
+        </section>
+
+        <section class="card rounded-2xl p-6 mt-8">
+            <h2 class="text-2xl font-semibold">Build your culture-first itinerary</h2>
+            <p class="text-[color:var(--muted)] mt-2">Tell us your interests (tea, silk, heritage performance, workshops), and we will design a practical day plan with timing and transport logic.</p>
+            <a class="cta inline-flex mt-5 rounded-lg px-5 py-3 font-semibold text-white" href="https://wa.me/8613800000000?text=Hi%2C%20I%20want%20a%20Hangzhou%20culture-focused%20itinerary." target="_blank" rel="noopener noreferrer">Consult via WhatsApp</a>
+        </section>
+
+    </main>
+</body>
+</html>

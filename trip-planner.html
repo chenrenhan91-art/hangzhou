@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Hangzhou Trip Planner | Build Your Personalized Itinerary</title>
+    <meta name="description" content="Plan a custom Hangzhou itinerary with AI-style preference matching. Choose days, interests, pace, budget, and must-see spots to generate your trip.">
+    <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+    <link rel="canonical" href="/trip-planner.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="AI Hangzhou Trip Planner">
+    <meta property="og:description" content="Create a personalized Hangzhou trip plan based on your travel style and preferences.">
+    <meta property="og:url" content="/trip-planner.html">
+    <meta property="og:image" content="./行程预定.jpg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #081017;
+            --ink-soft: #0f1b25;
+            --line: rgba(171, 238, 230, 0.27);
+            --text: #e7f5f7;
+            --muted: #9db4bc;
+            --accent: #39bea8;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at 8% -5%, rgba(52, 145, 138, 0.28), transparent 34%),
+                radial-gradient(circle at 90% 0%, rgba(35, 89, 121, 0.28), transparent 30%),
+                linear-gradient(150deg, #071018 0%, #09151f 45%, #08131c 100%);
+            min-height: 100vh;
+        }
+
+        .glass {
+            background: linear-gradient(180deg, rgba(14, 29, 40, 0.72), rgba(8, 18, 27, 0.78));
+            border: 1px solid var(--line);
+            backdrop-filter: blur(7px);
+        }
+
+        .field {
+            width: 100%;
+            border: 1px solid rgba(164, 221, 214, 0.34);
+            background: rgba(8, 18, 27, 0.78);
+            color: var(--text);
+            border-radius: 0.7rem;
+            padding: 0.65rem 0.8rem;
+            outline: none;
+        }
+
+        .field:focus {
+            border-color: rgba(112, 225, 211, 0.8);
+            box-shadow: 0 0 0 2px rgba(58, 155, 144, 0.28);
+        }
+
+        .chip {
+            border: 1px solid rgba(169, 224, 217, 0.32);
+            background: rgba(10, 23, 31, 0.75);
+            border-radius: 999px;
+            padding: 0.45rem 0.75rem;
+            font-size: 0.85rem;
+            color: #d5f7f0;
+        }
+
+        .btn-main {
+            background: linear-gradient(90deg, #10a08f, #137e97);
+        }
+
+        .day-card {
+            border: 1px solid rgba(159, 223, 214, 0.28);
+            background: rgba(9, 19, 28, 0.78);
+            border-radius: 1rem;
+        }
+
+        .slot-title {
+            color: #92f2e6;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-size: 0.72rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="max-w-6xl mx-auto px-5 pt-8 pb-6">
+        <a href="./index.html" class="text-sm text-cyan-200/90 hover:text-cyan-100">Back to Home</a>
+        <h1 class="text-3xl md:text-5xl font-bold mt-4 tracking-tight">AI Custom Hangzhou Trip Planner</h1>
+        <p class="text-slate-300 mt-3 max-w-3xl">Tell us your interests and constraints. The planner will generate a day-by-day Hangzhou itinerary with attraction mix, timing rhythm, and practical notes.</p>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-5 pb-16 grid grid-cols-1 lg:grid-cols-[1.05fr_1fr] gap-6">
+        <section class="glass rounded-2xl p-5 md:p-6">
+            <h2 class="text-2xl font-semibold">Your Preferences</h2>
+            <form id="planner-form" class="mt-5 space-y-4">
+                <div>
+                    <label class="text-sm text-slate-300">Trip length (days)</label>
+                    <select id="days" class="field mt-1" required>
+                        <option value="1">1 day</option>
+                        <option value="2">2 days</option>
+                        <option value="3" selected>3 days</option>
+                        <option value="4">4 days</option>
+                        <option value="5">5 days</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="text-sm text-slate-300">Primary preference</label>
+                    <select id="preference" class="field mt-1" required>
+                        <option value="nature">Nature landscapes</option>
+                        <option value="culture">Culture & history</option>
+                        <option value="balanced" selected>Balanced mix</option>
+                        <option value="food">Food & local life</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="text-sm text-slate-300">Travel pace</label>
+                    <select id="pace" class="field mt-1" required>
+                        <option value="relaxed">Relaxed</option>
+                        <option value="normal" selected>Normal</option>
+                        <option value="intensive">Intensive</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="text-sm text-slate-300">Traveler profile</label>
+                    <select id="group" class="field mt-1" required>
+                        <option value="solo">Solo</option>
+                        <option value="couple" selected>Couple</option>
+                        <option value="family">Family with kids</option>
+                        <option value="friends">Friends</option>
+                        <option value="senior">Senior-friendly</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="text-sm text-slate-300">Budget range</label>
+                    <select id="budget" class="field mt-1" required>
+                        <option value="economy">Economy</option>
+                        <option value="comfort" selected>Comfort</option>
+                        <option value="luxury">Luxury</option>
+                    </select>
+                </div>
+
+                <fieldset>
+                    <legend class="text-sm text-slate-300 mb-2">Must include (optional)</legend>
+                    <div class="flex flex-wrap gap-2">
+                        <label class="chip"><input class="mr-1" type="checkbox" value="West Lake">West Lake</label>
+                        <label class="chip"><input class="mr-1" type="checkbox" value="Lingyin Temple">Lingyin Temple</label>
+                        <label class="chip"><input class="mr-1" type="checkbox" value="Longjing Village">Longjing Village</label>
+                        <label class="chip"><input class="mr-1" type="checkbox" value="Leifeng Pagoda">Leifeng Pagoda</label>
+                        <label class="chip"><input class="mr-1" type="checkbox" value="Hefang Street">Hefang Street</label>
+                    </div>
+                </fieldset>
+
+                <div>
+                    <label class="text-sm text-slate-300">Special notes (food, mobility, photo, kids, etc.)</label>
+                    <textarea id="notes" rows="3" class="field mt-1" placeholder="Example: Prefer less walking, vegetarian meals, sunset photography"></textarea>
+                </div>
+
+                <div class="flex gap-3 pt-2">
+                    <button type="submit" class="btn-main px-5 py-2.5 rounded-lg font-semibold text-white">Generate AI Plan</button>
+                    <button id="copy-plan" type="button" class="px-5 py-2.5 rounded-lg font-semibold border border-cyan-200/30 bg-cyan-900/20 text-cyan-100">Copy Plan</button>
+                </div>
+            </form>
+        </section>
+
+        <section class="glass rounded-2xl p-5 md:p-6">
+            <div class="flex items-center justify-between gap-3">
+                <h2 class="text-2xl font-semibold">Your Personalized Itinerary</h2>
+                <a class="text-sm text-cyan-200 underline" target="_blank" rel="noopener noreferrer" href="https://wa.me/8613800000000?text=Hi%2C%20please%20help%20me%20finalize%20my%20Hangzhou%20AI%20trip%20plan.">Ask on WhatsApp</a>
+            </div>
+            <p id="ai-summary" class="text-slate-300 mt-3">Fill your preferences and click "Generate AI Plan" to get your custom schedule.</p>
+            <div id="itinerary" class="mt-5 space-y-4"></div>
+        </section>
+    </main>
+
+    <script>
+        const places = [
+            { name: 'West Lake', tags: ['nature', 'culture', 'balanced'], pace: ['relaxed', 'normal', 'intensive'], group: ['solo', 'couple', 'family', 'friends', 'senior'], budget: ['economy', 'comfort', 'luxury'], note: 'UNESCO landscape loop with causeways and boat options.', link: 'https://en.wikipedia.org/wiki/West_Lake' },
+            { name: 'Lingyin Temple', tags: ['culture', 'balanced'], pace: ['normal', 'intensive', 'relaxed'], group: ['solo', 'couple', 'family', 'friends', 'senior'], budget: ['economy', 'comfort', 'luxury'], note: 'Temple + Feilai peak heritage route.', link: 'https://en.wikipedia.org/wiki/Lingyin_Temple' },
+            { name: 'Longjing Village', tags: ['nature', 'culture', 'balanced'], pace: ['relaxed', 'normal'], group: ['solo', 'couple', 'family', 'friends', 'senior'], budget: ['economy', 'comfort', 'luxury'], note: 'Tea terraces and Dragon Well tasting.', link: 'https://en.wikipedia.org/wiki/Longjing,_Hangzhou' },
+            { name: 'Leifeng Pagoda', tags: ['culture', 'balanced'], pace: ['relaxed', 'normal', 'intensive'], group: ['solo', 'couple', 'family', 'friends', 'senior'], budget: ['comfort', 'luxury', 'economy'], note: 'Classic skyline view and White Snake legend.', link: 'https://en.wikipedia.org/wiki/Leifeng_Pagoda' },
+            { name: 'China National Tea Museum', tags: ['culture', 'balanced'], pace: ['relaxed', 'normal'], group: ['solo', 'couple', 'family', 'friends', 'senior'], budget: ['economy', 'comfort', 'luxury'], note: 'Bilingual tea culture exhibits.', link: 'https://en.wikipedia.org/wiki/China_National_Tea_Museum' },
+            { name: 'Hefang Street', tags: ['food', 'culture', 'balanced'], pace: ['relaxed', 'normal', 'intensive'], group: ['solo', 'couple', 'family', 'friends'], budget: ['economy', 'comfort', 'luxury'], note: 'Old street snacks and local life.', link: 'https://en.wikivoyage.org/wiki/Hangzhou' },
+            { name: 'Grand Canal (Hangzhou)', tags: ['culture', 'food', 'balanced'], pace: ['relaxed', 'normal'], group: ['solo', 'couple', 'family', 'friends', 'senior'], budget: ['economy', 'comfort', 'luxury'], note: 'Waterfront heritage corridor.', link: 'https://en.wikipedia.org/wiki/Grand_Canal_(China)' },
+            { name: 'Zhejiang Provincial Museum', tags: ['culture', 'balanced'], pace: ['relaxed', 'normal'], group: ['solo', 'couple', 'family', 'friends', 'senior'], budget: ['economy', 'comfort', 'luxury'], note: 'Great rainy-day history stop.', link: 'https://en.wikipedia.org/wiki/Zhejiang_Provincial_Museum' },
+            { name: 'Hangzhou Botanical Garden', tags: ['nature', 'balanced'], pace: ['relaxed', 'normal'], group: ['solo', 'couple', 'family', 'friends', 'senior'], budget: ['economy', 'comfort', 'luxury'], note: 'Low-crowd green walking route.', link: 'https://en.wikipedia.org/wiki/Hangzhou_Botanical_Garden' },
+            { name: 'Hangzhou Cuisine Night', tags: ['food', 'balanced'], pace: ['relaxed', 'normal', 'intensive'], group: ['solo', 'couple', 'family', 'friends', 'senior'], budget: ['economy', 'comfort', 'luxury'], note: 'Evening dining focused on local classics.', link: 'https://en.wikipedia.org/wiki/Hangzhou_cuisine' }
+        ];
+
+        const form = document.getElementById('planner-form');
+        const itinerary = document.getElementById('itinerary');
+        const summary = document.getElementById('ai-summary');
+        const copyBtn = document.getElementById('copy-plan');
+
+        function scorePlace(place, profile) {
+            let score = 0;
+            if (profile.preference === 'balanced') {
+                score += 2;
+            } else if (place.tags.includes(profile.preference)) {
+                score += 5;
+            }
+            if (place.pace.includes(profile.pace)) score += 2;
+            if (place.group.includes(profile.group)) score += 2;
+            if (place.budget.includes(profile.budget)) score += 1;
+            return score;
+        }
+
+        function slotsPerDayByPace(pace) {
+            if (pace === 'relaxed') return 2;
+            if (pace === 'intensive') return 4;
+            return 3;
+        }
+
+        function buildPlan(profile) {
+            const used = new Set();
+            const picked = [];
+            const ranked = places
+                .map((p) => ({ ...p, score: scorePlace(p, profile) }))
+                .sort((a, b) => b.score - a.score);
+
+            profile.mustInclude.forEach((m) => {
+                const found = ranked.find((p) => p.name === m);
+                if (found && !used.has(found.name)) {
+                    picked.push(found);
+                    used.add(found.name);
+                }
+            });
+
+            ranked.forEach((p) => {
+                if (!used.has(p.name)) {
+                    picked.push(p);
+                    used.add(p.name);
+                }
+            });
+
+            const totalSlots = profile.days * slotsPerDayByPace(profile.pace);
+            return picked.slice(0, totalSlots);
+        }
+
+        function renderPlan(profile, plan) {
+            itinerary.innerHTML = '';
+            const slots = ['Morning', 'Afternoon', 'Evening', 'Night'];
+            const perDay = slotsPerDayByPace(profile.pace);
+            let idx = 0;
+
+            for (let day = 1; day <= profile.days; day += 1) {
+                const dayCard = document.createElement('article');
+                dayCard.className = 'day-card p-4';
+                const title = document.createElement('h3');
+                title.className = 'text-xl font-semibold';
+                title.textContent = `Day ${day}`;
+                dayCard.appendChild(title);
+
+                const list = document.createElement('div');
+                list.className = 'mt-3 space-y-3';
+
+                for (let s = 0; s < perDay; s += 1) {
+                    if (!plan[idx]) break;
+                    const p = plan[idx];
+                    const row = document.createElement('div');
+                    row.className = 'border border-cyan-200/20 rounded-lg p-3 bg-cyan-900/10';
+                    row.innerHTML = `
+                        <p class="slot-title">${slots[s]}</p>
+                        <p class="mt-1 font-semibold">${p.name}</p>
+                        <p class="text-sm text-slate-300 mt-1">${p.note}</p>
+                        <a class="text-sm text-cyan-200 underline mt-2 inline-block" href="${p.link}" target="_blank" rel="noopener noreferrer">Read English intro ↗</a>
+                    `;
+                    list.appendChild(row);
+                    idx += 1;
+                }
+
+                dayCard.appendChild(list);
+                itinerary.appendChild(dayCard);
+            }
+
+            const mustText = profile.mustInclude.length ? `Must-include spots: ${profile.mustInclude.join(', ')}.` : 'No fixed must-include spots selected.';
+            const noteText = profile.notes ? ` Extra notes considered: ${profile.notes}.` : '';
+            summary.textContent = `AI plan generated for ${profile.days} day(s), ${profile.preference} preference, ${profile.pace} pace, ${profile.group} profile, and ${profile.budget} budget. ${mustText}${noteText}`;
+        }
+
+        function serializePlanText() {
+            const blocks = [...document.querySelectorAll('#itinerary .day-card')];
+            if (!blocks.length) return '';
+            const lines = [summary.textContent, ''];
+
+            blocks.forEach((block) => {
+                lines.push(block.querySelector('h3').textContent);
+                const rows = [...block.querySelectorAll('div > div')];
+                rows.forEach((row) => {
+                    const slot = row.querySelector('.slot-title').textContent;
+                    const title = row.querySelector('p.font-semibold').textContent;
+                    const desc = row.querySelector('p.text-sm').textContent;
+                    lines.push(`- ${slot}: ${title} | ${desc}`);
+                });
+                lines.push('');
+            });
+
+            return lines.join('\n');
+        }
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const profile = {
+                days: Number(document.getElementById('days').value),
+                preference: document.getElementById('preference').value,
+                pace: document.getElementById('pace').value,
+                group: document.getElementById('group').value,
+                budget: document.getElementById('budget').value,
+                mustInclude: [...form.querySelectorAll('input[type="checkbox"]:checked')].map((x) => x.value),
+                notes: document.getElementById('notes').value.trim()
+            };
+
+            const plan = buildPlan(profile);
+            renderPlan(profile, plan);
+        });
+
+        copyBtn.addEventListener('click', async () => {
+            const text = serializePlanText();
+            if (!text) {
+                copyBtn.textContent = 'Generate First';
+                setTimeout(() => { copyBtn.textContent = 'Copy Plan'; }, 1200);
+                return;
+            }
+            try {
+                await navigator.clipboard.writeText(text);
+                copyBtn.textContent = 'Copied';
+                setTimeout(() => { copyBtn.textContent = 'Copy Plan'; }, 1200);
+            } catch {
+                copyBtn.textContent = 'Copy Failed';
+                setTimeout(() => { copyBtn.textContent = 'Copy Plan'; }, 1200);
+            }
+        });
+    </script>
+</body>
+</html>
